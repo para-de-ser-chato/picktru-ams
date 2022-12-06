@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_01p1hfy" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
   <bpmn:collaboration id="Collaboration_14rprvm">
-    <bpmn:participant id="Participant_16nmxai" name="U-HW" processRef="Process_1qmtum3" />
+    <bpmn:participant id="Participant_16nmxai" name="D-OP" processRef="Process_1qmtum3" />
     <bpmn:participant id="Participant_0p90i1g" name="Cliente" />
     <bpmn:messageFlow id="Flow_0zr13vq" sourceRef="Event_1wb0kqm" targetRef="Participant_0p90i1g" />
   </bpmn:collaboration>
@@ -114,7 +114,7 @@
       <bpmn:incoming>Flow_1ovdon4</bpmn:incoming>
       <bpmn:outgoing>Flow_1x82mcz</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_0jwqlak" name="Executar Plano de Revisão">
+    <bpmn:task id="Activity_0jwqlak" name="Executar Ação do Plano de Revisão">
       <bpmn:incoming>Flow_1saz09n</bpmn:incoming>
       <bpmn:outgoing>Flow_1ovdon4</bpmn:outgoing>
       <bpmn:property id="Property_08yjwt9" name="__targetRef_placeholder" />
@@ -122,6 +122,7 @@
         <bpmn:sourceRef>DataObjectReference_1hv1hjc</bpmn:sourceRef>
         <bpmn:targetRef>Property_08yjwt9</bpmn:targetRef>
       </bpmn:dataInputAssociation>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" />
     </bpmn:task>
     <bpmn:dataObjectReference id="DataObjectReference_1hv1hjc" name="Plano de Revisão" dataObjectRef="DataObject_1h94gzh" />
     <bpmn:dataObject id="DataObject_1h94gzh" />
@@ -140,6 +141,9 @@
     <bpmn:adHocSubProcess id="Activity_0e0dyfa" name="Executar Tarefas na Aplicação SMART">
       <bpmn:incoming>Flow_1d2r0iv</bpmn:incoming>
       <bpmn:outgoing>Flow_1l3e8xf</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0lx79y5">
+        <bpmn:targetRef>DataStoreReference_1tblar0</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
       <bpmn:task id="Activity_1pq0jpl" name="Adicionar Descrição de Novo Tipo de Artigo" />
       <bpmn:task id="Activity_1qlciae" name="Remover Descrição de Tipo de Artigo Existente" />
       <bpmn:task id="Activity_1cht5k0" name="Atualizar Descrição de Tipo de Artigo Existente" />
@@ -180,10 +184,15 @@
       <bpmn:outgoing>Flow_1td29z4</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0uusgah" />
     </bpmn:startEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_1tblar0" name="Repositório SMART" />
     <bpmn:textAnnotation id="TextAnnotation_1oo548y">
       <bpmn:text>Para cada Ação no Plano de Testes</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1ef5oz9" sourceRef="Activity_0inrsk2" targetRef="TextAnnotation_1oo548y" />
+    <bpmn:textAnnotation id="TextAnnotation_05wimom">
+      <bpmn:text>Para cada Ação no Plano de Revisão</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0oi4hwf" sourceRef="Activity_0jwqlak" targetRef="TextAnnotation_05wimom" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_14rprvm">
@@ -191,16 +200,12 @@
         <dc:Bounds x="160" y="80" width="2160" height="620" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_14j1jhu_di" bpmnElement="Lane_14j1jhu" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="2130" height="295" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0wlmrh9_di" bpmnElement="Lane_0wlmrh9" isHorizontal="true">
         <dc:Bounds x="190" y="375" width="2130" height="325" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1oo548y_di" bpmnElement="TextAnnotation_1oo548y">
-        <dc:Bounds x="1540" y="110" width="100" height="55" />
+      <bpmndi:BPMNShape id="Lane_14j1jhu_di" bpmnElement="Lane_14j1jhu" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="2130" height="295" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ye0474_di" bpmnElement="Activity_0ye0474">
@@ -292,12 +297,6 @@
           <dc:Bounds x="2211" y="162" width="78" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_06302jp_di" bpmnElement="Event_0xjredi">
-        <dc:Bounds x="252" y="212" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="246" y="255" width="49" height="40" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1655gnm" bpmnElement="Activity_0e0dyfa" isExpanded="true">
         <dc:Bounds x="600" y="400" width="260" height="240" />
       </bpmndi:BPMNShape>
@@ -333,10 +332,20 @@
         <dc:Bounds x="1140" y="191" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_1ef5oz9_di" bpmnElement="Association_1ef5oz9">
-        <di:waypoint x="1528" y="190" />
-        <di:waypoint x="1552" y="165" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_06302jp_di" bpmnElement="Event_0xjredi">
+        <dc:Bounds x="252" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="246" y="255" width="49" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1oo548y_di" bpmnElement="TextAnnotation_1oo548y">
+        <dc:Bounds x="1540" y="110" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_05wimom_di" bpmnElement="TextAnnotation_05wimom">
+        <dc:Bounds x="1980" y="110" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1td29z4_di" bpmnElement="Flow_1td29z4">
         <di:waypoint x="288" y="230" />
         <di:waypoint x="340" y="230" />
@@ -462,8 +471,22 @@
         <di:waypoint x="2180" y="230" />
         <di:waypoint x="2232" y="230" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1ef5oz9_di" bpmnElement="Association_1ef5oz9">
+        <di:waypoint x="1528" y="190" />
+        <di:waypoint x="1552" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0oi4hwf_di" bpmnElement="Association_0oi4hwf">
+        <di:waypoint x="1968" y="190" />
+        <di:waypoint x="1992" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataStoreReference_1tblar0_di" bpmnElement="DataStoreReference_1tblar0">
+        <dc:Bounds x="705" y="755" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="702" y="812" width="56" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_039wl60_di" bpmnElement="Participant_0p90i1g" isHorizontal="true">
-        <dc:Bounds x="160" y="740" width="2160" height="60" />
+        <dc:Bounds x="160" y="860" width="2160" height="60" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1nca3lm_di" bpmnElement="DataOutputAssociation_1nca3lm">
@@ -483,9 +506,13 @@
         <di:waypoint x="1930" y="495" />
         <di:waypoint x="1930" y="270" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0lx79y5_di" bpmnElement="DataOutputAssociation_0lx79y5">
+        <di:waypoint x="730" y="640" />
+        <di:waypoint x="730" y="755" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0zr13vq_di" bpmnElement="Flow_0zr13vq">
         <di:waypoint x="2250" y="248" />
-        <di:waypoint x="2250" y="740" />
+        <di:waypoint x="2250" y="860" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
