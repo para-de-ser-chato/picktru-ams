@@ -58,12 +58,12 @@
     <bpmn:subProcess id="Activity_00llwfb" name="Executar Plano de Projeto">
       <bpmn:incoming>Flow_1khjeym</bpmn:incoming>
       <bpmn:outgoing>Flow_1v1zy2z</bpmn:outgoing>
-      <bpmn:property id="Property_09hf89e" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_0dmprsm">
+      <bpmn:property id="Property_1rq4m86" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0pzldtd">
         <bpmn:sourceRef>DataObjectReference_0xm6yp1</bpmn:sourceRef>
-        <bpmn:targetRef>Property_09hf89e</bpmn:targetRef>
+        <bpmn:targetRef>Property_1rq4m86</bpmn:targetRef>
       </bpmn:dataInputAssociation>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_1s6dxe7">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0tjbqqi">
         <bpmn:targetRef>DataObjectReference_0xm6yp1</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
       <bpmn:startEvent id="Event_03o3rk6">
@@ -170,7 +170,7 @@
       </bpmn:endEvent>
       <bpmn:dataObjectReference id="DataObjectReference_1q4z5yq" name="Relatório Final" dataObjectRef="DataObject_1ypc0f1" />
       <bpmn:dataObject id="DataObject_1ypc0f1" />
-      <bpmn:task id="Activity_1mdjtm0" name="Definir Novo Prazo">
+      <bpmn:task id="Activity_1mdjtm0" name="Analisar e Definir Novo Prazo">
         <bpmn:incoming>Flow_070f5vi</bpmn:incoming>
         <bpmn:incoming>Flow_13zz5kq</bpmn:incoming>
         <bpmn:outgoing>Flow_04dtijw</bpmn:outgoing>
@@ -208,7 +208,7 @@
       </bpmn:boundaryEvent>
       <bpmn:sequenceFlow id="Flow_070f5vi" sourceRef="Event_0sc9mx3" targetRef="Activity_1mdjtm0" />
       <bpmn:sequenceFlow id="Flow_13zz5kq" sourceRef="Event_0nbx1ma" targetRef="Activity_1mdjtm0" />
-      <bpmn:task id="Activity_0745zut" name="Análise das Alterações Pedidas">
+      <bpmn:task id="Activity_0745zut" name="Avaliar as Alterações Pedidas">
         <bpmn:incoming>Flow_08ajdg7</bpmn:incoming>
         <bpmn:outgoing>Flow_148knnz</bpmn:outgoing>
       </bpmn:task>
@@ -702,10 +702,6 @@
         <di:waypoint x="550" y="360" />
         <di:waypoint x="600" y="360" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_00v1wn2" bpmnElement="DataInputAssociation_0dmprsm">
-        <di:waypoint x="620" y="385" />
-        <di:waypoint x="620" y="480" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0kmlim9" bpmnElement="Flow_1v1zy2z">
         <di:waypoint x="2480" y="905" />
         <di:waypoint x="2532" y="905" />
@@ -780,9 +776,13 @@
         <di:waypoint x="930" y="378" />
         <di:waypoint x="930" y="480" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_1s6dxe7_di" bpmnElement="DataOutputAssociation_1s6dxe7">
-        <di:waypoint x="622" y="480" />
-        <di:waypoint x="622" y="385" />
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0tjbqqi_di" bpmnElement="DataOutputAssociation_0tjbqqi">
+        <di:waypoint x="610" y="480" />
+        <di:waypoint x="610" y="385" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0pzldtd_di" bpmnElement="DataInputAssociation_0pzldtd">
+        <di:waypoint x="630" y="390" />
+        <di:waypoint x="630" y="480" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
