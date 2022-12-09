@@ -17,21 +17,12 @@
         <bpmn:targetRef>DataStoreReference_0cril5m</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:task>
-    <bpmn:sendTask id="Activity_16j3ep4" name="Enviar Plano de Projeto ao Cliente">
-      <bpmn:incoming>Flow_03f3hrj</bpmn:incoming>
-      <bpmn:outgoing>Flow_01c09fz</bpmn:outgoing>
-      <bpmn:property id="Property_1k6u10g" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_0y02ugg">
-        <bpmn:sourceRef>DataObjectReference_0xm6yp1</bpmn:sourceRef>
-        <bpmn:targetRef>Property_1k6u10g</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
-    </bpmn:sendTask>
     <bpmn:exclusiveGateway id="Gateway_1ruv0pf">
       <bpmn:incoming>Flow_0qqof0h</bpmn:incoming>
       <bpmn:incoming>Flow_0rnjzl8</bpmn:incoming>
       <bpmn:outgoing>Flow_0cofp4m</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_0li1lwa" name="Analisar Descrição da Loja">
+    <bpmn:task id="Activity_0li1lwa" name="Analisar Descrição da Loja e Elaborar Plano de Projeto">
       <bpmn:incoming>Flow_0cofp4m</bpmn:incoming>
       <bpmn:outgoing>Flow_03f3hrj</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_19c3ifw">
@@ -240,10 +231,8 @@
     <bpmn:dataObject id="DataObject_18er6fd" />
     <bpmn:sequenceFlow id="Flow_0ggbx46" sourceRef="Event_013szms" targetRef="Activity_1nstmyn" />
     <bpmn:sequenceFlow id="Flow_0qqof0h" sourceRef="Activity_1nstmyn" targetRef="Gateway_1ruv0pf" />
-    <bpmn:sequenceFlow id="Flow_03f3hrj" sourceRef="Activity_0li1lwa" targetRef="Activity_16j3ep4" />
     <bpmn:sequenceFlow id="Flow_0cofp4m" sourceRef="Gateway_1ruv0pf" targetRef="Activity_0li1lwa" />
     <bpmn:sequenceFlow id="Flow_1v1zy2z" sourceRef="Activity_00llwfb" targetRef="Event_1w40qmp" />
-    <bpmn:sequenceFlow id="Flow_01c09fz" sourceRef="Activity_16j3ep4" targetRef="Gateway_1tqyi2b" />
     <bpmn:eventBasedGateway id="Gateway_1tqyi2b">
       <bpmn:incoming>Flow_01c09fz</bpmn:incoming>
       <bpmn:outgoing>Flow_0bb28p2</bpmn:outgoing>
@@ -275,6 +264,17 @@
       <bpmn:incoming>Flow_02ypp54</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_02ypp54" sourceRef="Activity_14hta78" targetRef="Event_17ol0b9" />
+    <bpmn:sendTask id="Activity_16j3ep4" name="Enviar Plano de Projeto ao Cliente">
+      <bpmn:incoming>Flow_03f3hrj</bpmn:incoming>
+      <bpmn:outgoing>Flow_01c09fz</bpmn:outgoing>
+      <bpmn:property id="Property_0t2z1w6" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0y02ugg">
+        <bpmn:sourceRef>DataObjectReference_0xm6yp1</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0t2z1w6</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="Flow_01c09fz" sourceRef="Activity_16j3ep4" targetRef="Gateway_1tqyi2b" />
+    <bpmn:sequenceFlow id="Flow_03f3hrj" sourceRef="Activity_0li1lwa" targetRef="Activity_16j3ep4" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1ixbhk3">
@@ -307,9 +307,6 @@
       <bpmndi:BPMNShape id="BPMNShape_0soeeke" bpmnElement="Activity_0li1lwa">
         <dc:Bounds x="500" y="210" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_17ol0b9_di" bpmnElement="Event_17ol0b9">
-        <dc:Bounds x="1172" y="232" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_09qxlzo" bpmnElement="Activity_00llwfb" isExpanded="true">
         <dc:Bounds x="260" y="480" width="2220" height="890" />
@@ -646,6 +643,14 @@
           <dc:Bounds x="905" y="386" width="49" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_17ol0b9_di" bpmnElement="Event_17ol0b9">
+        <dc:Bounds x="1172" y="232" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0jwbbe4_di" bpmnElement="DataOutputAssociation_0jwbbe4">
+        <di:waypoint x="1060" y="210" />
+        <di:waypoint x="1060" y="130" />
+        <di:waypoint x="1665" y="130" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_19xcd9x" bpmnElement="DataInputAssociation_0y02ugg">
         <di:waypoint x="640" y="360" />
         <di:waypoint x="680" y="360" />
@@ -740,11 +745,6 @@
       <bpmndi:BPMNEdge id="Flow_02ypp54_di" bpmnElement="Flow_02ypp54">
         <di:waypoint x="1110" y="250" />
         <di:waypoint x="1172" y="250" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_0jwbbe4_di" bpmnElement="DataOutputAssociation_0jwbbe4">
-        <di:waypoint x="1060" y="210" />
-        <di:waypoint x="1060" y="130" />
-        <di:waypoint x="1665" y="130" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
