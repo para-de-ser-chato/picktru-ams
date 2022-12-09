@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="(new model)" id="id-0f0fc8755410456bbf5c2bbbc5c07aee" version="4.9.0">
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="PICKTRU" id="id-0f0fc8755410456bbf5c2bbbc5c07aee" version="4.9.0">
   <folder name="Strategy" id="id-7e711e1520e542beb3f9e4916253db0a" type="strategy">
     <element xsi:type="archimate:Resource" name="Resource" id="id-aa6a07a667b849e381387434932c92cf"/>
   </folder>
@@ -376,7 +376,7 @@
     <element xsi:type="archimate:AssignmentRelationship" id="id-906b61d036224b8282dd0e8a4c70c6b2" source="id-00972fab00e3412aa521272fad47aba3" target="id-98a6bc5baafe421f853721e75a839ee3"/>
   </folder>
   <folder name="Views" id="id-1766ccad5011408a888986670259793b" type="diagrams">
-    <element xsi:type="archimate:ArchimateDiagramModel" name="Default View" id="id-3199a0c3a85846a98b87dc98fb201b1e" viewpoint="layered">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Layered View" id="id-3199a0c3a85846a98b87dc98fb201b1e" viewpoint="layered">
       <child xsi:type="archimate:DiagramObject" id="id-5c9e4792ea4241e1848fa0726add4dbf" textPosition="1" archimateElement="id-df217898f28244e39fb2d13ea264d6df">
         <bounds x="-408" y="108" width="2184" height="48"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-c48e8d7daefb473093aa5e72bbfb352c" source="id-5c9e4792ea4241e1848fa0726add4dbf" target="id-03cac5f4dd2943aa8721cabecf840f2b" archimateRelationship="id-7e93a859d9c94dbf9a6771017fa1bfe0"/>
