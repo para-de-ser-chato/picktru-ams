@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper, portrait, margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage{svg}
+\usepackage{wrapfig}
+\usepackage{lastpage}
+
+\graphicspath{ {./} }
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=blue,
+	pdftitle={Projeto AMS 2022/2023 - Entrega 1 - Grupo 38},
+	pdfpagemode=FullScreen,
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{Projeto AMS 2022/2023 - Entrega 1 - Grupo 38}
+\fancyfoot[R]{Pág. \thepage{} de \pageref*{LastPage}}
+
+\begin{document}
+
+\begin{titlepage}
+	\begin{center}
+
+		\vspace*{0.5cm}
+		\includegraphics[width=0.5\textwidth]{ist-logo.png}
+
+		\vspace{1cm}
+		\Huge
+		\textbf{Projeto de AMS: Entrega 1}
+
+		\vspace{0.5cm}
+		\LARGE
+		Grupo 38 \quad | \quad Turno L08 \quad | \quad 2022/2023
+
+		\vfill
+	\end{center}
+
+	\large
+	\begin{tabular}{c|c|c}
+		\textbf{Nome}           & \textbf{Número} & \textbf{Est. Horas Trabalho} \\
+		\hline
+		Diogo Romão Cardoso     & 99209           & 10h                          \\
+		João Fernandes Rocha    & 99256           & 10h                          \\
+		Rafael Serra e Oliveira & 99311           & 10h
+	\end{tabular}
+
+	\vspace{5cm}
+\end{titlepage}
+
+\begin{landscape}
+	\section*{A.1. Diagrama de Vista Geral do Negócio}
+	\includesvg[inkscapelatex=false,width=1.55\textwidth]{../PICKTRU.svg}
+\end{landscape}
+
+\begin{landscape}
+	\section*{A.2. Diagrama do Processo P-SET}
+	\includesvg[inkscapelatex=false,width=1.55\textwidth]{../P-SET.svg}
+\end{landscape}
+
+\begin{landscape}
+	\section*{A.3. Diagrama do Processo P-ON}
+	\includesvg[inkscapelatex=false,width=1.55\textwidth]{../P-ON.svg}
+\end{landscape}
+
+\end{document}
