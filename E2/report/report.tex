@@ -23,7 +23,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[C]{Projeto AMS 2022/2023 - Entrega 2 - Grupo 38}
-\fancyfoot[L]{99209, 99256, 99311}
+\fancyfoot[C]{99209, 99256, 99311}
 \fancyfoot[R]{Pág. \thepage{} de \pageref*{LastPage}}
 
 \begin{document}
@@ -49,9 +49,9 @@
 	\begin{tabular}{c|c|c}
 		\textbf{Nome}           & \textbf{Número} & \textbf{Est. Horas Trabalho} \\
 		\hline
-		Diogo Romão Cardoso     & 99209           & 19h                          \\
-		João Fernandes Rocha    & 99256           & 19h                          \\
-		Rafael Serra e Oliveira & 99311           & 19h
+		Diogo Romão Cardoso     & 99209           & 20h                          \\
+		João Fernandes Rocha    & 99256           & 20h                          \\
+		Rafael Serra e Oliveira & 99311           & 20h
 	\end{tabular}
 
 	\vspace{5cm}
@@ -101,5 +101,24 @@
 	\section*{B.6. Diagrama Interno de Blocos: Sistema STORE}
 	\includegraphics[width=1.31\textwidth]{../iBD_STORE.png}
 \end{landscape}
+
+\section*{Notas, \emph{Assumptions} e Escolhas de Desenho} \label{notes}
+\normalsize
+\textbf{B.1.1. Diagrama de Vista Geral do Negócio}
+\begin{itemize}
+	\item Modelou-se o P-ON como um Processo de Negócios que se serve de uma Interação de Negócios (que lhe fornece a sua funcionalidade), visto a designação explícita de "Processo" imposta pelo Universo de Discurso, apesar de ser possível modelar o P-ON como uma Interação de Negócios por si só (sem a necessidade de um Processo de Negócios).
+	\item Optou-se por representar uma relação "servir" entre a Aplicação TEST e os Interfaces Aplicacionais para interação com os sistemas do cliente, visto que esta "fornece a sua funcionalidade" a esses elementos (durante a execução do processo P-ON).
+\end{itemize}
+\textbf{B.1.2. Diagrama do Processo P-SET}
+\begin{itemize}
+	\item Considerou-se que os detalhes das tarefas a executar durante a fase de instalação estão definidos no Plano de Projeto, tendo validado com a docente a notação abreviada de acesso relativa ao sub-processo inteiro, de modo a evitar a complexidade desnecessária do diagrama.
+	\item Após deliberação, considerou-se que os relatórios referidos nas linhas 86-88 e nas linhas 99-102 do Universo de Discurso são os mesmos (Relatório Final), dado a semelhança da linguagem utilizada e do procedimento expresso, levando, caso se considerassem documentos distintos, a uma repetição desnecessária. Isto é também reforçado pela atomicidade da fase de testes aludido pelas linhas 80-11 do Universo de Discurso.
+\end{itemize}
+\textbf{B.1.3. Diagrama do Processo P-ON}
+\begin{itemize}
+	\item Seguindo o aconselhado pela docente, optou-se por modelar o processo com um \emph{Message Start Event} em cada \emph{pool}, visto que o Universo de Discurso nada diz relativamente à origem do Plano de Trabalhos, nem se as unidades referidas o recebem em simultâneo.
+	\item Conforme o exemplificado nas aulas teóricas, utilizaram-se \emph{Parallel Gateways} em pontos críticos de comunicação, prevenindo problemas de (falta de) sincronização entre os fluxos dos dois participantes, de modo a assegurar que nenhuma mensagem é perdida.
+	\item Não sendo o Universo de Discurso explícito, e após validar com a docente, assumiu-se que não seria necessário a \emph{U-HW} aguardar que a \emph{U-SW} terminasse de analisar o plano de trabalhos antes da primeira se deslocar à loja, nem que seria necessário que a \emph{U-SW} aguardasse que a \emph{U-HW} terminasse de executar as suas tarefas na loja antes da primeira começar a preparação dos testes.
+\end{itemize}
 
 \end{document}
